@@ -63,7 +63,7 @@ $.urlParam = function(name,url){
 function handler(parameters,callback){
   $.ajax({
      type: 'get',
-     url: 'http://104.131.165.92:8081/get_product_details',
+     url: 'http://0.0.0.0:3000/get_product_details',
      data : parameters,
      success: function(d){
       callback(d);
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log(parameters);
       $.ajax({
         type: 'get',
-        url: 'http://104.131.165.92:8081/alerting',
+        url: 'http://0.0.0.0:3000/alerting',
         data : parameters,
         success: function(d){
           console.log(d);
@@ -123,6 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
     getCurrentTabUrl(function(url) {
       console.log(url);
       if($.urlParam('pid',url) != null){
+        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        console.log($.urlParam('pid',url) );
         handler({ 'product_id' : $.urlParam('pid',url) },function(data){
           product_detail = data;
           $('#details').text(product_detail.details);

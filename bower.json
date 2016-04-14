@@ -1,0 +1,29 @@
+{
+  "name": "flipkart_extension_frontend",
+  "homepage": "https://github.com/puneet24/flipkart_extension_frontend",
+  "authors": [
+    "punsa <puneet.241994.agarwal@gmail.com>"
+  ],
+  "description": "Flipkart Price alert setter",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "Flipkart",
+    "Product",
+    "Price",
+    "Alert",
+    "Range",
+    "Set"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}
