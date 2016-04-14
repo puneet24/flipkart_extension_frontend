@@ -40,14 +40,6 @@ function getCurrentTabUrl(callback) {
     callback(url);
   });
 
-  // Most methods of the Chrome extension APIs are asynchronous. This means that
-  // you CANNOT do something like this:
-  //
-  // var url;
-  // chrome.tabs.query(queryInfo, function(tabs) {
-  //   url = tabs[0].url;
-  // });
-  // alert(url); // Shows "undefined", because chrome.tabs.query is async.
 }
 
 $.urlParam = function(name,url){
@@ -60,7 +52,7 @@ $.urlParam = function(name,url){
     }
 }
 
-function handler(parameters,callback){
+function getProductDetails(parameters,callback){
   $.ajax({
      type: 'get',
      url: 'http://0.0.0.0:3000/get_product_details',
@@ -123,9 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     getCurrentTabUrl(function(url) {
       console.log(url);
       if($.urlParam('pid',url) != null){
-        console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        console.log($.urlParam('pid',url) );
-        handler({ 'product_id' : $.urlParam('pid',url) },function(data){
+        getProductDetails({ 'product_id' : $.urlParam('pid',url) },function(data){
           product_detail = data;
           $('#details').text(product_detail.details);
           $('#current_price').text(product_detail.price);
